@@ -1,11 +1,11 @@
 {
-  "name": "haoyunbang",
+  "name": "nodeclub",
   "version": "1.0.0",
   "main": "app.js",
   "private": true,
   "customHost": [
-    "182.92.242.64",
-    "club.haoyunbang.cn"
+    "cnodejs.org",
+    "club.cnodejs.org"
   ],
   "dependencies": {
     "async": "0.9.0",
