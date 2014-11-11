@@ -3,6 +3,7 @@ var config = require('../config');
 var util = require('util');
 
 var transport = mailer.createTransport('SMTP', config.mail_opts);
+
 var SITE_ROOT_URL = 'http://' + config.host;
 
 /**
@@ -13,6 +14,7 @@ var sendMail = function (data) {
   if (config.debug) {
     return;
   }
+  //console.log(data);
   // 遍历邮件数组，发送每一封邮件，如果有发送失败的，就再压入数组，同时触发mailEvent事件
   transport.sendMail(data, function (err) {
     if (err) {

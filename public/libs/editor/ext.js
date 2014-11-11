@@ -124,7 +124,7 @@
             paste: document.body,
             dnd: this.$upload[0],
             auto: true,
-            fileSingleSizeLimit: 2 * 1024 * 1024,
+            fileSingleSizeLimit: 5 * 1024 * 1024,
             //sendAsBinary: true,
             // 只允许选择图片文件。
             accept: {
