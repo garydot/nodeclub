@@ -1,11 +1,11 @@
 {
-  "name": "nodeclub",
+  "name": "好孕帮",
   "version": "1.0.0",
   "main": "app.js",
   "private": true,
   "customHost": [
-    "cnodejs.org",
-    "club.cnodejs.org"
+    "182.92.242.64",
+    "club.haoyunbang.cn"
   ],
   "dependencies": {
     "async": "0.9.0",
