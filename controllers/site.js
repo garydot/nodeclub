@@ -53,11 +53,21 @@ exports.index = function (req, res, next) {
   // 取主题
   var query = {};
   if (tab && tab !== 'all') {
-    query.tab = tab;
+    //gary - 增加精华 
+    if (tab == 'jing') {
+      query.good = true;
+    } else if (tab !== 'newest')
+      query.tab = tab;
   }
 
   var limit = config.list_topic_count;
-  var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
+  var options;
+  if (tab && tab == 'newest') { 
+      //gary - 增加最新排序
+      options = { skip: (page - 1) * limit, limit: limit, sort: '-top -create_at'};
+  } else {
+      options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
+  }
   var optionsStr = JSON.stringify(query) + JSON.stringify(options);
 
   cache.get(optionsStr, proxy.done(function (topics) {

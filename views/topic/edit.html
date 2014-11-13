@@ -30,7 +30,8 @@
         <form id='create_topic_form' action='/topic/create' method='post'>
           <% } %>
           <fieldset>
-            <span class="tab-selector">选择版块：</span>
+            <!-- gary -->
+           <!--  <span class="tab-selector">选择版块：</span>
             <select name="tab" id="tab-value">
               <option value="">请选择</option>
               <%
@@ -45,7 +46,7 @@
                 <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
 
               <%});%>
-            </select>
+            </select> -->
             <span id="topic_create_warn"></span>
             <textarea autofocus class='span9' id='title' name='title' rows='1'
                       placeholder="标题字数 10 字以上"
@@ -88,13 +89,14 @@
 
     // 版块选择的检查，必须选择
     $('#create_topic_form').on('submit', function (e) {
-      var tabValue = $('#tab-value').val();
-      if (!tabValue) {
-        alert('必须选择一个版块！');
-        $('.submit_btn').button('reset');
-        $('.tab-selector').css('color', 'red');
-        return false;
-      }
+      //gary - 去掉板块选择检查
+      // var tabValue = $('#tab-value').val();
+      // if (!tabValue) {
+      //   alert('必须选择一个版块！');
+      //   $('.submit_btn').button('reset');
+      //   $('.tab-selector').css('color', 'red');
+      //   return false;
+      // }
     });
     // END 版块选择的检查，必须选择
 

@@ -88,7 +88,8 @@ exports.show = show;
 var create = function (req, res, next) {
   var title = validator.trim(req.body.title);
   title = validator.escape(title);
-  var tab = validator.trim(req.body.tab);
+  //gary - 去掉论坛板块
+  var tab = '1';//validator.trim(req.body.tab);
   tab = validator.escape(tab);
   var content = validator.trim(req.body.content);
 
@@ -103,7 +104,7 @@ var create = function (req, res, next) {
     editError = '标题不能是空的。';
   } else if (title.length < 5 || title.length > 100) {
     editError = '标题字数太多或太少。';
-  } else if (!tab || allTabs.indexOf(tab) === -1) {
+  } else if (!tab ) { //|| allTabs.indexOf(tab) === -1
     editError = '必须选择一个版块。';
   } else if (content === '') {
     editError = '内容不可为空';

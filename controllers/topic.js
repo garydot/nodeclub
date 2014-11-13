@@ -108,8 +108,9 @@ exports.create = function (req, res, next) {
 exports.put = function (req, res, next) {
   var title = validator.trim(req.body.title);
   title = validator.escape(title);
-  var tab = validator.trim(req.body.tab);
-  tab = validator.escape(tab);
+  //gary - 将提交的话题分类设为all
+  var tab = '1';  //validator.trim(req.body.tab);
+  //tab = validator.escape(tab);
   var content = validator.trim(req.body.t_content);
 
   // 得到所有的 tab, e.g. ['ask', 'share', ..]
@@ -123,7 +124,7 @@ exports.put = function (req, res, next) {
     editError = '标题不能是空的。';
   } else if (title.length < 5 || title.length > 100) {
     editError = '标题字数太多或太少。';
-  } else if (!tab || allTabs.indexOf(tab) === -1) {
+  } else if (!tab) { // || allTabs.indexOf(tab) === -1
     editError = '必须选择一个版块。';
   } else if (content === '') {
     editError = '内容不可为空';
@@ -191,7 +192,8 @@ exports.showEdit = function (req, res, next) {
 exports.update = function (req, res, next) {
   var topic_id = req.params.tid;
   var title = req.body.title;
-  var tab = req.body.tab;
+  //gary - 将提交的话题分类设为 1 
+  var tab = '1';//req.body.tab;
   var content = req.body.t_content;
 
   Topic.getTopicById(topic_id, function (err, topic, tags) {
@@ -203,8 +205,9 @@ exports.update = function (req, res, next) {
     if (topic.author_id.equals(req.session.user._id) || req.session.user.is_admin) {
       title = validator.trim(title);
       title = validator.escape(title);
-      tab = validator.trim(tab);
-      tab = validator.escape(tab);
+      //gary - 将提交的话题分类设为 1 
+      // tab = validator.trim(tab);
+      // tab = validator.escape(tab);
       content = validator.trim(content);
 
       // 验证
